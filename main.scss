@@ -1,0 +1,41 @@
+// #scrubber {
+// 	opacity: 0;
+// }
+// #tooltip {
+// 	opacity: 0;
+// 	path {
+// 		fill: #333;
+// 	}
+// }
+// .tooltip {
+// 	background: black;
+// }
+
+// #column {
+// 	&:hover {
+// 		#scrubber {
+// 			opacity: 1;
+// 		}
+// 		#tooltip {
+// 			opacity: 1;
+// 		}
+// 	}
+// }
+
+
+h1 {
+	margin-top: 3em;
+}
+
+.bar {
+	&.negative {fill: red}
+	&.positive {fill: blue}
+}
+ 
+.hotspot {
+	fill: transparent;
+}
+
+.scrub {
+	fill: #eee;
+}
