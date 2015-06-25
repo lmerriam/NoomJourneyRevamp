@@ -24,12 +24,20 @@
 
 
 h1 {
-	margin-top: 3em;
+	margin-top: 6em;
 }
+
 
 .bar {
 	&.negative {fill: red}
 	&.positive {fill: blue}
+}
+
+.cal-graph {
+	.bar {
+		&.negative {fill: blue}
+		&.positive {fill: red}
+	}
 }
  
 .hotspot {
