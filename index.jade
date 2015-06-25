@@ -1,46 +1,48 @@
 h1 good user
 h4 calories
-#calories-good.cal-graph
+#calories-good.graph.cal-graph
 //- h4 exercise
-//- #exercise-good
+//- #exercise-good.graph
 h4 articles
-#articles-good
+#articles-good.graph
 
 h1 bad user
 h4 calories
-#calories-bad.cal-graph
+#calories-bad.graph.cal-graph
 //- h4 exercise
-//- #exercise-bad
+//- #exercise-bad.graph
 h4 articles
-#articles-bad
+#articles-bad.graph
 
 h1 mixed user
 h4 calories
-#calories-mixed.cal-graph
+#calories-mixed.graph.cal-graph
 //- h4 exercise
-//- #exercise-mixed
+//- #exercise-mixed.graph
 h4 articles
-#articles-mixed
+#articles-mixed.graph
 
 h1 spotty user
 h4 calories
-#calories-spotty.cal-graph
+#calories-spotty.graph.cal-graph
 //- h4 exercise
-//- #exercise-spotty
+//- #exercise-spotty.graph
 h4 articles
-#articles-spotty
+#articles-spotty.graph
 
 script.
 
   var initChart = function(file, element) {
     var array = [];
 
+    //grab text file and convert to arrays
     d3.text(file, function(data) {
       c = d3.csv.parseRows(data);
       for (i = 0; i < c.length; i++) {
         array.push([ c[i][0], parseFloat(c[i][1]) ] )
       }
 
+    //call columnChart() on the chart container elements
     d3.select(element)
       .datum(array)
         .call(columnChart()
