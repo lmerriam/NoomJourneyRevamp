@@ -30,6 +30,14 @@ h4 calories
 h4 articles
 #articles-spotty.graph
 
+h1 badData user
+h4 calories
+#calories-badData.graph.cal-graph
+//- h4 exercise
+//- #exercise-badData.graph
+h4 articles
+#articles-badData.graph
+
 script.
 
   var initChart = function(file, element) {
@@ -39,7 +47,11 @@ script.
     d3.text(file, function(data) {
       c = d3.csv.parseRows(data);
       for (i = 0; i < c.length; i++) {
-        array.push([ c[i][0], parseFloat(c[i][1]) ] )
+        var isSolid = 1;
+        if (c[i].length > 2) {
+          isSolid = parseInt(c[i][2])
+        }
+        array.push([ c[i][0], parseFloat(c[i][1]), isSolid ] )
       }
 
     //call columnChart() on the chart container elements
@@ -68,3 +80,7 @@ script.
   initChart("data/calories_spotty.csv", "#calories-spotty")
   initChart("data/exercise_spotty.csv", "#exercise-spotty")
   initChart("data/articles_spotty.csv", "#articles-spotty")
+
+  initChart("data/calories_badData.csv", "#calories-badData")
+  initChart("data/exercise_badData.csv", "#exercise-badData")
+  initChart("data/articles_badData.csv", "#articles-badData")

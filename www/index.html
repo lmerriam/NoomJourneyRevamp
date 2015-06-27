@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><link rel="stylesheet" href="main.css"><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script><script type="text/javascript" src="column-chart.js"></script></head><body><h1>good user</h1><h4>calories</h4><div id="calories-good" class="graph cal-graph"></div><h4>articles</h4><div id="articles-good" class="graph"></div><h1>bad user</h1><h4>calories</h4><div id="calories-bad" class="graph cal-graph"></div><h4>articles</h4><div id="articles-bad" class="graph"></div><h1>mixed user</h1><h4>calories</h4><div id="calories-mixed" class="graph cal-graph"></div><h4>articles</h4><div id="articles-mixed" class="graph"></div><h1>spotty user</h1><h4>calories</h4><div id="calories-spotty" class="graph cal-graph"></div><h4>articles</h4><div id="articles-spotty" class="graph"></div><h1>badData user</h1><h4>calories</h4><div id="calories-badData" class="graph cal-graph"></div><h4>articles</h4><div id="articles-badData" class="graph"></div><script>var initChart = function(file, element) {
+  var array = [];
+
+  //grab text file and convert to arrays
+  d3.text(file, function(data) {
+    c = d3.csv.parseRows(data);
+    for (i = 0; i < c.length; i++) {
+      var isSolid = 1;
+      if (c[i].length > 2) {
+        isSolid = parseInt(c[i][2])
+      }
+      array.push([ c[i][0], parseFloat(c[i][1]), isSolid ] )
+    }
+
+  //call columnChart() on the chart container elements
+  d3.select(element)
+    .datum(array)
+      .call(columnChart()
+        .width(600)
+        .height(100)
+        .x(function(d, i) { return d[0]; })
+        .y(function(d, i) { return d[1]; }));
+  });
+};
+
+initChart("data/calories_good.csv", "#calories-good")
+initChart("data/exercise_good.csv", "#exercise-good")
+initChart("data/articles_good.csv", "#articles-good")
+
+initChart("data/calories_bad.csv", "#calories-bad")
+initChart("data/exercise_bad.csv", "#exercise-bad")
+initChart("data/articles_bad.csv", "#articles-bad")
+
+initChart("data/calories_mixed.csv", "#calories-mixed")
+initChart("data/exercise_mixed.csv", "#exercise-mixed")
+initChart("data/articles_mixed.csv", "#articles-mixed")
+
+initChart("data/calories_spotty.csv", "#calories-spotty")
+initChart("data/exercise_spotty.csv", "#exercise-spotty")
+initChart("data/articles_spotty.csv", "#articles-spotty")
+
+initChart("data/calories_badData.csv", "#calories-badData")
+initChart("data/exercise_badData.csv", "#exercise-badData")
+initChart("data/articles_badData.csv", "#articles-badData")</script></body></html>

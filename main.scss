@@ -29,7 +29,7 @@ h1 {
 
 .graph {
 	display: inline-block;
-	background: url('http://cdn.backgroundhost.com/backgrounds/subtlepatterns/subtle_dots.png') repeat;
+	// background: url('http://cdn.backgroundhost.com/backgrounds/subtlepatterns/subtlenet2.png') repeat;
 }
 
 .bar {
@@ -45,9 +45,15 @@ h1 {
 }
  
 .hotspot {
-	fill: transparent;
+	fill: rgba(0,0,0,0.05);
 }
 
 .scrub {
 	fill: #eee;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #666;
+  shape-rendering: crispEdges;
 }
